@@ -6,7 +6,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 // placing user order for frontend
 const placeOrder = async (req, res) => {
-    const frontend_url = "http://localhost:5174";
+    const frontend_url = "https://food-delivery-app-frontend-u2z4.onrender.com/"; // Ensure the frontend URL is correct and consistent
 
     // Exchange rate (1 USD = 80 INR for example)
     const USD_TO_INR = 80;
@@ -60,18 +60,22 @@ const placeOrder = async (req, res) => {
         });
 
         // Create a Stripe Checkout session
+        const successUrl = `${frontend_url}/verify?success=true&orderId=${newOrder._id}`;
+        const cancelUrl = `${frontend_url}/verify?success=false&orderId=${newOrder._id}`;
+ 
         const session = await stripe.checkout.sessions.create({
             line_items: line_items,
             mode: 'payment',
-            success_url: `${frontend_url}/verify?success=true&orderId=${newOrder._id}`,
-            cancel_url: `${frontend_url}/verify?success=false&orderId=${newOrder._id}`,
+            success_url: successUrl,
+            cancel_url: cancelUrl,
         });
 
+        // Respond with the session URL
         res.json({ success: true, session_url: session.url });
 
     } catch (error) {
-        console.error(error);
-        res.json({ success: false, message: "Error" });
+        console.error("Error in placeOrder:", error); // Log detailed error
+        res.status(500).json({ success: false, message: "Internal server error" });
     }
 };
 
