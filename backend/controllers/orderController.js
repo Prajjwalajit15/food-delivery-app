@@ -6,8 +6,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 // placing user order for frontend
 const placeOrder = async (req, res) => {
-    const frontend_url = "https://food-delivery-app-frontend-u2z4.onrender.com"; // Ensure the frontend URL is correct and consistent
-
+    const frontend_url = process.env.FRONTEND_URL || "http://localhost:5173"; 
     // Exchange rate (1 USD = 80 INR for example)
     const USD_TO_INR = 80;
 

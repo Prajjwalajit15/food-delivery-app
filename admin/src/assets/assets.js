@@ -15,7 +15,5 @@ export const assets ={
 }
 
 // 1sr url
-// export const url = 'https://food-delivery-app-backend-kohv.onrender.com'
-
-// 2nd url
-export const url = 'https://food-delivery-app-backend2-8adq.onrender.com'
+export const url = 'https://food-delivery-app-backend-kohv.onrender.com'
+ 
