@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from './components/Navbar/Navbar'
 import { Route, Routes } from 'react-router-dom'
 import Home from './pages/Home/Home'
@@ -12,6 +12,9 @@ import MyOrders from './pages/MyOrders/MyOrders'
 const App = () => {
   const [showLogin,setShowLogin] = useState(false);
 
+  useEffect(()=>{
+    alert("Please wait for a moment to load food data...");
+  },[])
 
   return (
     <> 
