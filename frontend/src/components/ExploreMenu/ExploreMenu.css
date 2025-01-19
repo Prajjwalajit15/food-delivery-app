@@ -89,6 +89,12 @@
         gap: 80px; 
     }
 }
+@media (max-width: 390px){
+    .explore-menu-list{ 
+        gap: 80px; 
+    }
+}
+
 @media (max-width: 380px){
     .explore-menu-list{ 
         gap: 40px; 
