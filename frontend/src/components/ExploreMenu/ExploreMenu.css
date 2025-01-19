@@ -86,7 +86,7 @@
 }
 @media (max-width: 430px){
     .explore-menu-list{ 
-        gap: 10px; 
+        gap: 7px; 
     }
 }
 @media (max-width: 380px){
